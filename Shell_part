@@ -18,9 +18,10 @@ https://leetcode.com/problems/transpose-file/
 #!/bin/bash
 
 line=`wc -l file.txt| awk '{print $1}'`
-column=`awk '{print NF}' file.txt|head -n1`
-for i in $(seq 1 $column); do
+#column=`awk '{print NF}' file.txt|head -n1`
+for i in $(seq 1 $(awk 'FNR==1 {print NF}' file.txt)); do
     for j in $(seq 1 $line); do
+        #sed -n ${j}p file.txt | awk '{printf $'$i'" "}'
         awk -v a=$j 'FNR==a {printf $'$i'" "}' file.txt
     done
     echo
