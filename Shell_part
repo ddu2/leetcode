@@ -1,0 +1,28 @@
+>>>
+195. Tenth Line
+https://leetcode.com/problems/tenth-line/
+
+# sed -n 10p file.txt
+
+>>>
+193. Valid Phone Numbers My Submissions QuestionEditorial Solution
+https://leetcode.com/problems/valid-phone-numbers/
+
+# grep -e '^([0-9]\{3\}) [0-9]\{3\}-[0-9]\{4\}$' -e '^[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}$' file.txt
+
+>>>
+194. Transpose File
+https://leetcode.com/problems/transpose-file/
+
+---	Memory Limit Exceeded ---
+#!/bin/bash
+
+line=`wc -l file.txt| awk '{print $1}'`
+column=`awk '{print NF}' file.txt|head -n1`
+for i in $(seq 1 $column); do
+    for j in $(seq 1 $line); do
+        awk -v a=$j 'FNR==a {printf $'$i'" "}' file.txt
+    done
+    echo
+done
+------------
