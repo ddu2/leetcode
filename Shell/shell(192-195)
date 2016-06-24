@@ -33,3 +33,12 @@ for i in $(seq 1 $(awk 'FNR==1 {print NF}' file.txt)); do
     echo
 done
 ------------
+
+--- Memory Limit Exceeded ---
+#!/bin/bash
+
+column=`awk '{print NF}' file.txt|head -n1`
+for i in $(seq 1 $column); do
+    echo `awk '{print $'$i'}' file.txt`
+done
+------------
